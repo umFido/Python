@@ -1,6 +1,6 @@
 from random import randint
 
-class Ave:
+class Ave():
     #Atributos da classe
     ave_especie = "ave"
     ave_cobertura = "penas"
@@ -10,28 +10,30 @@ class Ave:
     def botarOvo(self):
         return "Botando {} ovos.".format(randint(0,5))
 
-
-class Mamifero:
+class Mamifero():
     #Atributos da classe
     mamifero_especie = "mamifero"
     mamifero_cobertura = "pelos"
 
+    #Métodos da classe
+    def beberLeite(self):
+        return "Bebendo leite."
 
-class animalEstimacao(Mamifero,Ave):
+class animalEstimacao():
     #Atributos da classe
 
     #Atributos dos objetos
-    def __init__(self,nome,idade, tipo):
+    def __init__(self, nome, idade, tipo):
         self.nome = nome
         self.idade = idade
         self.tipo = tipo
         if tipo == "mamifero":
-            self.especie = self.mamifero_especie
-            self.cobertura = self.mamifero_cobertura
-        
+            self.especie = Mamifero.mamifero_especie
+            self.cobertura = Mamifero.mamifero_cobertura
+            
         else:
-            self.especie = self.ave_especie
-            self.cobertura = self.ave_cobertura
+            self.especie = Ave.ave_especie
+            self.cobertura = Ave.ave_cobertura
 
     #Métodos dos atributos
     #--Método que descreve o objeto
@@ -45,14 +47,18 @@ class animalEstimacao(Mamifero,Ave):
     def falar(self, fala):
         return "{} diz: {}.".format(self.nome, fala)
 
-fido = animalEstimacao("Fido", 5, "mamifero")
-caca = animalEstimacao("Cacá", 3, "ave")
+gato = animalEstimacao("Fido", 5, "mamifero")
+cacatua = animalEstimacao("Cacá", 3, "ave")
 
-print(fido.descricao())
-print(fido.falar("Eu sou um gato"))
+print(gato.descricao())
+#print(gato.falar("Eu sou um gato"))
 #todos os objetos criados podem usar métodos das classes pai
-print("{} está {}".format(fido.nome, fido.botarOvo()))
+#print("{} está {}".format(gato.nome, gato.botarOvo()))
+#print("Mas gato não bota ovo...")
+print()
+#
+print(cacatua.descricao())
+#print(cacatua.falar("Eu sou uma calopsita"))
+print("{} está {}".format(cacatua.nome, cacatua.botarOvo()))
 
-print("Mas gato não bota ovo...")
-#print(caca.descricao())
-#print(caca.falar("Eu sou uma calopsita"))
+#print(animalEstimacao.mro())

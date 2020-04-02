@@ -6,18 +6,24 @@ import ClasseGatos as CG
 
 #Criando uma nova classe que herdará atributos da classe Gato do arquivo ClasseGatos
 class GatoPreto(CG.Gato):
-    
+    #É possível sobrescrever atributos da classe pai na classe filho
+    especie = "Demonio Carmesim"
+
     def dorme(self, tempo):
-        return "{} dorme {} horas.".format(self.nome, tempo)
+        return "{} dorme {} horas por dia.".format(self.nome, tempo)
 
 ##Classes filhas herdam atributos da classe pai, como .nome() e .idade()
-chomuske = GatoPreto("Chomuske", "3", "Gato Demonho")
+chomuske = GatoPreto("Chomuske", "3", "Gato")
 ##tambem herdam metodos da classe pai, como .descricao()
 print(chomuske.descricao())
+print("{} é um {}".format(chomuske.nome, chomuske.especie))
 
 #Alem de possuirem metodos proprios de suas classe que nao sao acessadas pela classe pai
 print(chomuske.dorme(10))
 
 #print()
-#print(isinstance(chomuske, GatoPreto))
-#print(isinstance(chomuske, CG.Gato))
+
+#A função isinstance() determina se uma instância pertence a uma determinada classe
+#print(isinstance(chomuske, GatoPreto)) #True, chomuske foi criado a partir da classe GatoPreto
+#print(isinstance(chomuske, CG.Gato)) #True, chomuske foi criado a partir da classe CG.Gato, pois GatoPreto a chama
+
